@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import {
+  initSocket,
+  disconnectSocket,
+  setBgColor,
+  subscribeToBgColor,
+  initialData,
+} from "./SocketService";
 
 function App() {
+  // inputların rengi
   const [color, setColor] = useState("#000");
-
-  const [userName, setUserName] = useState("");
-
-  const [lastName, setLastName] = useState("KİMSESİZ");
-
+  // background rengi
   const [lastColor, setLastColor] = useState("#ffff");
+  // username
+  const [userName, setUserName] = useState("");
+  //en son değişiklik yapanın ismi
+  const [lastName, setLastName] = useState("KİMSESİZ");
 
   useEffect(() => {
     if (!userName) {
@@ -17,11 +25,26 @@ function App() {
     }
   }, [userName]);
 
+  useEffect(() => {
+    initSocket();
+    initialData(setLastColor, setColor, setLastName);
+
+    subscribeToBgColor((data) => {
+      console.log(data);
+      setLastColor(data.color);
+      setColor(data.color);
+      setLastName(data.name);
+    });
+
+    return () => disconnectSocket();
+  }, [lastColor]);
+
   const handleColor = () => {
-    if (color === lastColor) {
-      window.alert("Renk seçer misin gardaş");
-    } else setLastColor(color);
-    setLastName(userName);
+    setLastColor(color);
+    setBgColor({
+      color: color,
+      name: userName,
+    });
   };
 
   return (
