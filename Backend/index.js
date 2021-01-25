@@ -1,6 +1,10 @@
 const app = require("express")();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
+require("dotenv").config();
+
+let port = process.env.PORT || 3000;
+
 
 app.get("/", (req, res) => {
   res.send("<h1>Renk Değiştir</h1>");
@@ -21,6 +25,6 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => console.log("a user disconnected"));
 });
 
-http.listen(4000, () => {
-  console.log("listening on *:4000");
+http.listen(port, () => {
+  console.log("listening on *:3000");
 });
