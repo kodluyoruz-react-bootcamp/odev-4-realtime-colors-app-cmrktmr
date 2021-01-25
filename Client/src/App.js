@@ -54,12 +54,11 @@ function App() {
         value={color}
         onChange={(e) => setColor(e.target.value)}
       />
+      <br></br>
       <button onClick={handleColor}>Rengi Değiştir </button>
-
-      <div>Color Name</div>
-      <div>{color}</div>
-
-      <div>Son Değiştiren: {lastName}</div>
+<br></br>
+      <div>Renk Hex kodu: {color}</div>
+      <div>Son Değiştiren Kullanıcı: {lastName}</div>
     </div>
   );
 }
