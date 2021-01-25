@@ -1,8 +1,8 @@
 # 4. Hafta ödevi
 
-<li>
-<lu>Kullanıcı Adı Seçiniz</lu>
-<lu>Değiştireceğiniz Rengi Seçiniz</lu>
-<lu>Son değişiklik yapan kullanıcı</lu>
+<lu>
+<li>Kullanıcı Adı Seçiniz</li>
+<li>Değiştireceğiniz Rengi Seçiniz</li>
+<li>Son değişiklik yapan kullanıcı</li>
 
-</li>
+</lu>
